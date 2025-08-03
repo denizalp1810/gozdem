@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Gözde'nin Doğum Günü Testi</title>
+    <style>
+        body {
+            background-image: url('WIN_20241227_17_45_29_Pro.JPG');
+            background-size: cover;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            color: white;
+            text-align: center;
+            padding: 50px;
+        }
+        .question-container {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        iframe {
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎉 Gözde'nin Doğum Günü Testi 🎉</h1>
+
+    <form id="quizForm">
+        <div class="question-container">
+            <p>1. Gözde'nin en sevdiği şey nedir?</p>
+            <label><input type="radio" name="q1" value="A"> A) Denizalp</label><br>
+            <label><input type="radio" name="q1" value="B"> B) Yeşil balonlar</label><br>
+            <label><input type="radio" name="q1" value="C"> C) Taylor Swift</label>
+        </div>
+
+        <div class="question-container">
+            <p>2. Gözde'nin sevgilisinin en sevdiği şey nedir?</p>
+            <label><input type="checkbox" name="q2" value="A"> A) Gözde'si</label><br>
+            <label><input type="checkbox" name="q2" value="B"> B) A şıkkı</label><br>
+            <label><input type="checkbox" name="q2" value="C"> C) A şıkkı</label>
+        </div>
+
+        <div class="question-container">
+            <p>3. 15.12 ne anlama gelir?</p>
+            <label><input type="radio" name="q3" value="A"> A) Saat</label><br>
+            <label><input type="radio" name="q3" value="B"> B) Çay günü</label><br>
+            <label><input type="radio" name="q3" value="C"> C) Canının içi bir tanecik sevgilinin doğum günü</label>
+        </div>
+
+        <div class="question-container">
+            <p>4. Denizalp ve Gözde birbirini ne kadar çok seviyor?</p>
+            <label><input type="radio" name="q4" value="A"> A) Aşırı sonsuz fena sonsuz çok</label><br>
+            <label><input type="radio" name="q4" value="B"> B) Sonsuzluk dahi hiçbir şeyle kıyaslanamayacak kadardan da fazla</label><br>
+            <label><input type="radio" name="q4" value="C"> C) Çok</label>
+        </div>
+
+        <div class="question-container">
+            <p>5. Gözde Nur Gülenç kimdir?</p>
+            <label><input type="radio" name="q5" value="A"> A) Denizalp'in bir tanesi</label><br>
+            <label><input type="radio" name="q5" value="B"> B) Denizalp'in iyi kişisi</label><br>
+            <label><input type="radio" name="q5" value="C"> C) Denizalp'in güzeli</label><br>
+            <label><input type="radio" name="q5" value="D"> D) Denizalp'in her şeyi</label><br>
+            <label><input type="radio" name="q5" value="E"> E) Hepsi</label>
+        </div>
+
+        <button type="button" onclick="checkAnswers()">Testi Bitir</button>
+    </form>
+
+    <div id="result" style="display:none;">
+        <h2>Tebrikler! 🎁 Hepsini doğru bildin!</h2>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/8fXRdSkFB3E" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <script>
+        function checkAnswers() {
+            const q1 = document.querySelector('input[name="q1"]:checked')?.value;
+            const q3 = document.querySelector('input[name="q3"]:checked')?.value;
+            const q4 = document.querySelector('input[name="q4"]:checked')?.value;
+            const q5 = document.querySelector('input[name="q5"]:checked')?.value;
+
+            const q2 = Array.from(document.querySelectorAll('input[name="q2"]:checked')).map(e => e.value);
+            const q2Correct = ['A', 'B', 'C'];
+
+            if (
+                q1 === 'A' &&
+                JSON.stringify(q2.sort()) === JSON.stringify(q2Correct.sort()) &&
+                q3 === 'C' &&
+                q4 === 'B' &&
+                q5 === 'E'
+            ) {
+                document.getElementById('quizForm').style.display = 'none';
+                document.getElementById('result').style.display = 'block';
+            } else {
+                alert("Hmm, bazı cevaplar eksik veya yanlış 😢 Bir daha dene!");
+            }
+        }
+    </script>
+</body>
+</html>
